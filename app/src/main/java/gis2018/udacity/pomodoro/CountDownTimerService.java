@@ -82,7 +82,6 @@ public class CountDownTimerService extends Service {
                 .setColor(getResources().getColor(R.color.colorPrimary))
                 .setContentIntent(pendingIntent)
                 .setContentText("Countdown timer is running")
-                .addAction(R.drawable.complete, "Complete", completeActionPendingIntent)
                 .addAction(R.drawable.cancel, "Cancel", cancelActionPendingIntent)
                 .setOngoing(false)
                 .build();
