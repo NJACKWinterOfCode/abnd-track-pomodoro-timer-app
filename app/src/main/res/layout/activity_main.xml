@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     tools:context=".MainActivity">
 
     <TextView
@@ -11,10 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:background="@drawable/circle"
+        android:gravity="center"
+        android:textColor="#FFFF00"
         app:layout_constraintBottom_toTopOf="@id/cardview_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,12 +118,13 @@
 
     <ImageView
         android:id="@+id/finish_imageview_main"
-        android:layout_width="117dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/complete_imageview_content_desc"
         android:src="@drawable/complete"
+        android:background="@drawable/circle_menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/timer_button_main"
         app:layout_constraintHorizontal_bias="0.5"
@@ -134,6 +139,8 @@
         android:layout_marginBottom="8dp"
         android:textOff="@string/start_pomodoro"
         android:textOn="@string/cancel_pomodoro"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/settings_imageview_main"
         app:layout_constraintHorizontal_bias="0.5"
@@ -141,10 +148,11 @@
 
     <ImageView
         android:id="@+id/settings_imageview_main"
-        android:layout_width="118dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/circle_menu"
         android:contentDescription="@string/settings_imageview_content_desc"
         android:src="@drawable/settings"
         app:layout_constraintBottom_toBottomOf="parent"
