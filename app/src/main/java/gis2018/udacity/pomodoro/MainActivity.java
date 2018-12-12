@@ -8,12 +8,14 @@ package gis2018.udacity.pomodoro;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -24,6 +26,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -41,6 +44,11 @@ import static gis2018.udacity.pomodoro.utils.Constants.STOP_ACTION_BROADCAST;
 import static gis2018.udacity.pomodoro.utils.Constants.TASK_INFORMATION_NOTIFICATION_ID;
 import static gis2018.udacity.pomodoro.utils.StopTimerUtils.sessionCancel;
 import static gis2018.udacity.pomodoro.utils.StopTimerUtils.sessionComplete;
+import android.app.NotificationManager;
+import android.support.v4.app.NotificationCompat;
+import android.view.View;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -73,7 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private AlertDialog alertDialog;
     private boolean isAppVisible = true;
     private String currentCountDown; // Current duration for Work-Session, Short-Break or Long-Break
-
+    private SeekBar volumeSeekbar = null;
+    private AudioManager audioManager = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +93,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ButterKnife.bind(this);
         setOnClickListeners();
-
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        int curVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         Utils.prepareSoundPool(this); //Prepare SoundPool to play ticking sounds
 
         // Set button as checked if the service is already running.
@@ -122,6 +133,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         alertDialog = createPomodoroCompletionAlertDialog();
         displayPomodoroCompletionAlertDialog();
+        SeekBar volumeControl = (SeekBar) findViewById(R.id.volume);
+        volumeControl.setMax(maxVolume);
+        volumeControl.setProgress(curVolume);
+
+        volumeControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, i, 0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
     }
 
     private void setInitialValuesOnScreen() {
