@@ -38,6 +38,7 @@ public class Utils {
         preferences
                 .edit()
                 .putInt(context.getString(R.string.task_on_hand_count_key), newWorkSessionCount)
+                .putInt(context.getString(R.string.work_session_count_key), newWorkSessionCount)
                 .apply();
 
 
@@ -52,7 +53,7 @@ public class Utils {
      * @return type of break, user should take
      */
     public static int getTypeOfBreak(SharedPreferences preferences, Context context) {
-        int currentWorkSessionCount = preferences.getInt(context.getString(R.string.work_session_count_key), 0);
+        int currentWorkSessionCount = preferences.getInt(context.getString(R.string.task_on_hand_count_key), 0);
         if (currentWorkSessionCount % 4 == 0)
             return LONG_BREAK;
         return SHORT_BREAK;
