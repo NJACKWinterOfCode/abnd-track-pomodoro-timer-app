@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void sessionCompleteAVFeedback(Context context) {
         //Update completed session text view count
         workSessionCountTextView.setText(String.valueOf(preferences
-                .getInt(getString(R.string.work_session_count_key), 0)));
+                .getInt(getString(R.string.task_on_hand_count_key), 0)));
         // Retrieving value of currentlyRunningServiceType from SharedPreferences.
         currentlyRunningServiceType = Utils.retrieveCurrentlyRunningServiceType(preferences,
                 getApplicationContext());
