@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             unregisterLocalBroadcastReceivers();
         }
 
-        new CountDownTimer(14400000, 1000) {//40000 milli seconds is total time, 1000 milli seconds is time interval
+        new CountDownTimer(14400000, 1000) {//14400000 milli seconds is total time, 1000 milli seconds is time interval
 
             @Override
             public void onTick(long millisUntilFinished) {
@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onDestroy() {
         isAppVisible = false;
 
-        new CountDownTimer(14400000, 1000) { //40000 milli seconds is total time, 1000 milli seconds is time interval
+        new CountDownTimer(14400000, 1000) { //14400000 milli seconds is total time, 1000 milli seconds is time interval
             @Override
             public void onTick(long millisUntilFinished) {
             }
