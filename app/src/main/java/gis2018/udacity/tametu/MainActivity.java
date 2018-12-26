@@ -24,7 +24,6 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +31,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.util.Date;
 import java.util.Timer;
 
 import butterknife.BindView;
@@ -225,12 +225,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         alertDialog = createTametuCompletionAlertDialog();
         displayTametuCompletionAlertDialog();
         super.onResume();
+        Date date = new Date(System.currentTimeMillis()); //or simply new Date();
+        long millis = date.getTime();
+        preferences.edit().putInt("continue",(int)millis/1000).apply();
     }
 
     @Override
     protected void onPause() {
         isAppVisible = false;
         super.onPause();
+        Date date = new Date(System.currentTimeMillis()); //or simply new Date();
+        long millis = date.getTime();
+        preferences.edit().putInt("pause",(int)millis/1000).apply();
     }
 
     @Override
@@ -239,35 +245,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (!isServiceRunning(CountDownTimerService.class)) {
             unregisterLocalBroadcastReceivers();
         }
-
-        new CountDownTimer(14400000, 1000) {//14400000 milli seconds is total time, 1000 milli seconds is time interval
-
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                preferences.edit().putInt(getString(R.string.work_session_count_key), 0).apply();
-            }
-        }.start();
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
         isAppVisible = false;
-
-        new CountDownTimer(14400000, 1000) { //14400000 milli seconds is total time, 1000 milli seconds is time interval
-            @Override
-            public void onTick(long millisUntilFinished) {
-            }
-
-            @Override
-            public void onFinish() {
-                preferences.edit().putInt(getString(R.string.work_session_count_key), 0).apply();
-            }
-        }.start();
         super.onDestroy();
     }
 
@@ -288,6 +271,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         registerLocalBroadcastReceivers();
+        int resume= preferences.getInt("continue",0);
+        int pause=preferences.getInt("pause",0);
+        if(resume-pause>=14400)
+            preferences.edit().putInt(getString(R.string.work_session_count_key),0).apply();
 
         // Retrieving value of currentlyRunningServiceType from SharedPreferences.
         currentlyRunningServiceType = Utils.retrieveCurrentlyRunningServiceType(preferences, this);
