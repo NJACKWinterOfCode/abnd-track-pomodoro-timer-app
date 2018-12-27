@@ -225,18 +225,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         alertDialog = createTametuCompletionAlertDialog();
         displayTametuCompletionAlertDialog();
         super.onResume();
-        Date date = new Date(System.currentTimeMillis()); //or simply new Date();
-        long millis = date.getTime();
-        preferences.edit().putInt("continue",(int)millis/1000).apply();
     }
 
     @Override
     protected void onPause() {
         isAppVisible = false;
         super.onPause();
-        Date date = new Date(System.currentTimeMillis()); //or simply new Date();
-        long millis = date.getTime();
-        preferences.edit().putInt("pause",(int)millis/1000).apply();
     }
 
     @Override
@@ -271,10 +265,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         registerLocalBroadcastReceivers();
-        int resume= preferences.getInt("continue",0);
-        int pause=preferences.getInt("pause",0);
-        if(resume-pause>=14400)
-            preferences.edit().putInt(getString(R.string.work_session_count_key),0).apply();
 
         // Retrieving value of currentlyRunningServiceType from SharedPreferences.
         currentlyRunningServiceType = Utils.retrieveCurrentlyRunningServiceType(preferences, this);
@@ -295,6 +285,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.timer_button_main:
+
+                Date date = new Date(System.currentTimeMillis()); //or simply new Date();
+                long millis = date.getTime();
+                int resume = (int) millis / 1000;
+                int pause = preferences.getInt("pause", 0);
+                if ((resume - pause) >= 14400)
+                    preferences.edit().putInt(getString(R.string.work_session_count_key), 0).apply();
+
                 if (currentlyRunningServiceType == TAMETU) {
                     if (timerButton.isChecked()) {
                         startTimer(workDuration);
