@@ -4,38 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/countdown_textview_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@id/cardview_main"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="165dp"
+        tools:layout_editor_absoluteY="72dp"
         tools:text="25:00" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardview_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:minHeight="196dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="8dp"
-        app:layout_constraintBottom_toTopOf="@id/timer_button_main"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/countdown_textview_main">
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="181dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -75,14 +64,14 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:gravity="center"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
+                android:cursorVisible="false"
                 android:defaultValue="Task 1"
+                android:gravity="center"
                 android:hint="Enter the task name here"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold"
-                android:cursorVisible="false"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/sessions_completed_textview_main"
@@ -119,44 +108,31 @@
         android:id="@+id/finish_imageview_main"
         android:layout_width="117dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/complete_imageview_content_desc"
-        android:src="@drawable/complete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/timer_button_main"
-        app:layout_constraintHorizontal_bias="0.5"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:contentDescription="@string/complete_imageview_content_desc"
+        android:src="@drawable/complete"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="479dp" />
 
     <ToggleButton
         android:id="@+id/timer_button_main"
         android:layout_width="117dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:textOff="@string/start_tametu"
         android:textOn="@string/cancel_tametu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/settings_imageview_main"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/finish_imageview_main" />
+        tools:layout_editor_absoluteX="133dp"
+        tools:layout_editor_absoluteY="448dp" />
 
     <ImageView
         android:id="@+id/settings_imageview_main"
         android:layout_width="118dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:contentDescription="@string/settings_imageview_content_desc"
-        android:src="@drawable/settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:clickable="true"
-        app:layout_constraintStart_toEndOf="@id/timer_button_main" />
+        android:contentDescription="@string/settings_imageview_content_desc"
+        android:src="@drawable/settings"
+        tools:layout_editor_absoluteX="258dp"
+        tools:layout_editor_absoluteY="479dp" />
 
 </android.support.constraint.ConstraintLayout>
