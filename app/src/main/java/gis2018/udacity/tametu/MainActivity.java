@@ -58,8 +58,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     BroadcastReceiver completedBroadcastReceiver;
     @BindView(R.id.settings_imageview_main)
     ImageView settingsImageView;
+<<<<<<< HEAD
 
     Button changeButton;
+=======
+>>>>>>> upstream/master
     @BindView(R.id.timer_button_main)
     ToggleButton timerButton;
     @BindView(R.id.countdown_textview_main)
@@ -156,7 +159,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void afterTextChanged(Editable s) {
 
-                prefs.edit().putString("autoSave", s.toString()).commit();
+                preferences.edit().putInt(getString(R.string.task_on_hand_count_key), 0).apply();
+                workSessionCountTextView.setText(String.valueOf(preferences.getInt(
+                        getString(R.string.task_on_hand_count_key), 0)));
+                prefs.edit().putString("autoSave", s.toString()).apply();
 
             }
         });
@@ -281,7 +287,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 break;
+<<<<<<< HEAD
 
+=======
+                
+>>>>>>> upstream/master
 
             case R.id.timer_button_main:
 
