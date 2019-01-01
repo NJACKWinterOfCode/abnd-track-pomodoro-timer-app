@@ -52,15 +52,6 @@ public class SettingsActivity extends AppCompatActivity implements AdapterView.O
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         initSpinner();
-        TextView aboutus = (TextView) findViewById(R.id.Aboutus);
-        aboutus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(SettingsActivity.this, Aboutus.class);
-                startActivity(i);
-            }
-        });
-
         seekBarInitialization();
     }
 
