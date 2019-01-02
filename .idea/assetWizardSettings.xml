@@ -18,8 +18,8 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundImage" value="D:\Hannan\UI\background.png" />
-                                      <entry key="foregroundImage" value="D:\Hannan\UI\foreground.png" />
+                                      <entry key="backgroundImage" value="D:\Hannan\UI\Icons\TametuApp\background_layer.png" />
+                                      <entry key="foregroundImage" value="D:\Hannan\UI\Icons\TametuApp\foreground_layer.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
