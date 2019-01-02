@@ -108,8 +108,8 @@
 
     <ImageView
         android:id="@+id/finish_imageview_main"
-        android:layout_width="47dp"
-        android:layout_height="44dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginStart="6dp"
         android:layout_marginBottom="44dp"
         android:background="@drawable/circle"
@@ -139,7 +139,7 @@
 
     <ImageView
         android:id="@+id/settings_imageview_main"
-        android:layout_width="50dp"
+        android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="44dp"

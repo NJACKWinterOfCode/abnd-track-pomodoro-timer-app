@@ -6,7 +6,7 @@
      android:layout_height="match_parent" android:layout_width="match_parent">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg"
         tools:context=".SettingsActivity">
 
@@ -34,11 +34,13 @@
 
         <Spinner
             android:id="@+id/work_duration_spinner"
-            android:layout_width="0dp"
-            android:layout_height="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="0dp"
             android:background="@drawable/layout_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,10 +62,12 @@
         <Spinner
             android:id="@+id/short_break_duration_spinner"
             android:layout_width="0dp"
-            android:layout_height="32dp"
+            android:layout_height="45dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="0dp"
             android:background="@drawable/layout_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,10 +89,12 @@
         <Spinner
             android:id="@+id/long_break_duration_spinner"
             android:layout_width="0dp"
-            android:layout_height="32dp"
+            android:layout_height="45dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="0dp"
             android:background="@drawable/layout_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -110,10 +116,12 @@
         <Spinner
             android:id="@+id/start_long_break_after_spinner"
             android:layout_width="0dp"
-            android:layout_height="32dp"
+            android:layout_height="45dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
+            android:paddingStart="5dp"
+            android:paddingEnd="0dp"
             android:background="@drawable/layout_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
